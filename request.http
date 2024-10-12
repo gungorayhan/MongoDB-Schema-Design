@@ -1,0 +1,141 @@
+###one-to-one
+###POST
+POST http://localhost:8888/one-to-one
+Content-Type: application/json
+
+{
+  "username": "ayhan",
+  "email": "ayhan@example.com",
+  "bio": "Software Developer",
+  "website": "https://example.com"
+}
+
+###GET
+GET http://localhost:8888/one-to-one/670a913d7bc787be6c634c78
+Content-Type: application/json
+
+
+###one-to-few
+POST http://localhost:8888/one-to-few
+Content-Type: application/json
+
+{
+  "username": "ayhan",
+  "email": "ayhan@example.com",
+  "addresses": [
+    {
+      "addressLine1": "1234 Elm Street",
+      "addressLine2": "Apt 567",
+      "city": "Springfield",
+      "state": "IL",
+      "postalCode": "62704",
+      "country": "USA"
+    },
+    {
+      "addressLine1": "5678 Oak Avenue",
+      "addressLine2": "Suite 100",
+      "city": "Metropolis",
+      "state": "NY",
+      "postalCode": "10001",
+      "country": "USA"
+    }
+  ]
+}
+
+###GET
+GET http://localhost:8888/one-to-few/670a9ada7e8a17c7045c88f2
+Content-Type: application/json
+
+
+###one-to-many
+POST http://localhost:8888/one-to-many
+Content-Type: application/json
+
+{
+  "username": "ayhan",
+  "email": "ayhan@example.com",
+  "orders": [
+    {
+        "product": "Smartphone",
+        "quantity": 3,
+        "price": 700
+    },
+    {
+        "product": "Laptop",
+        "quantity": 1,
+        "price": 1200
+    }
+  ]
+}
+###GET
+GET http://localhost:8888/one-to-many/670ab3d26a48b944fe0d8e1a
+Content-Type: application/json
+
+###one-to-squillions
+##user
+POST http://localhost:8888/one-to-squillions
+Content-Type: application/json
+
+{
+  "username": "ayhan",
+  "email": "ayhan@example.com"
+}
+
+### POST Kullanıcıya Ait İşlem Ekleme
+POST http://localhost:8888/one-to-squillions/670abed05683de419f590985/transactions
+Content-Type: application/json
+
+{
+  "amount": 100,
+  "date": "2024-10-11T12:34:56.789Z",
+  "description": "Laptop purchase"
+}
+
+### GET Kullanıcı İşlemlerini Listeleme (Sayfalı)
+GET http://localhost:8888/one-to-squillions/670abed05683de419f590985/transactions?page=2&limit=10
+Content-Type: application/json
+
+###many-to-many
+### POST Kullanıcı Oluşturma
+POST http://localhost:8888/many-to-many/user
+Content-Type: application/json
+
+{
+  "username": "ayhan",
+  "email": "ayhan@example.com"
+}
+
+### GET Kullanıcıyı Getirme
+GET http://localhost:8888/many-to-many/user/670acad83f07a91a5a757469
+Content-Type: application/json
+
+### POST Kurs Oluşturma
+POST http://localhost:8888/many-to-many/course
+Content-Type: application/json
+
+{
+  "title": "JavaScript for Beginners",
+  "description": "A complete guide to JavaScript."
+}
+
+### GET Kursu Getirme
+GET http://localhost:8888/many-to-many/course/670acae93f07a91a5a75746c
+Content-Type: application/json
+
+### POST Kullanıcıyı Kursa Ekleme
+POST http://localhost:8888/many-to-many/usertocourse
+Content-Type: application/json
+
+{
+  "userId": "670acad83f07a91a5a757469",
+  "courseId": "670acae93f07a91a5a75746c"
+}
+
+### POST Kullanıcı Kurs Kaydını Güncelleme
+POST http://localhost:8888/
+Content-Type: application/json
+
+{
+  "userId": "USER_ID",
+  "courseId": "COURSE_ID"
+}
